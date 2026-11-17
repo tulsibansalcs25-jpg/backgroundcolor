@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Editor</title>
+  <style>
+        * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      background: #f0f2f5;
+      color: #222;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+    }
+
+    #writingBox {
+      display: block;
+      width: 100%;
+      min-height: 420px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+      color: #222;
+      font: 1rem/1.6 "Segoe UI", sans-serif;
+      resize: vertical;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .control {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 40px;
+      font: inherit;
+    }
+
+    input[type="color"] {
+      padding: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>My Text Editor</h1>
+
+    <textarea id="writingBox" placeholder="Start writing here..."></textarea>
+
+    <section class="controls" aria-label="Text editor styling">
+      <div class="control">
+        <label for="backgroundColor">Background color</label>
+        <input type="color" id="backgroundColor" value="#ffffff">
+      </div>
+
+      <div class="control">
+        <label for="textColor">Text color</label>
+        <input type="color" id="textColor" value="#222222">
+      </div>
+
+      <div class="control">
+        <label for="fontFamily">Font family</label>
+        <select id="fontFamily">
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Segoe UI', sans-serif">Segoe UI</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="Verdana, sans-serif">Verdana</option>
+        </select>
+      </div>
+    </section>
+  </main>
+</body>
+<script>     const writingBox = document.getElementById("writingBox");
+
+    document.getElementById("backgroundColor").addEventListener("input", event => {
+      writingBox.style.backgroundColor = event.target.value;
+    });
+
+    document.getElementById("textColor").addEventListener("input", event => {
+      writingBox.style.color = event.target.value;
+    });
+
+    document.getElementById("fontFamily").addEventListener("change", event => {
+      writingBox.style.fontFamily = event.target.value;
+    });</script>
+</html>
